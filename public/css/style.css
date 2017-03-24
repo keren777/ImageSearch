@@ -1,6 +1,7 @@
 section {
   width: 90%;
-  margin: 0 auto; }
+  margin: 0 auto;
+  font-family: 'Open Sans', sans-serif; }
   section h1 {
     margin: 20px auto;
     text-align: center;
@@ -11,46 +12,97 @@ section {
     text-align: center; }
     section form #searchTerm {
       height: 28px;
-      width: 100%;
-      max-width: 500px;
-      margin-bottom: 10px;
+      width: 55%;
       padding: 0 5px; }
+    section form #buttons {
+      width: 40%;
+      display: inline-block;
+      text-align: right; }
+      @media screen and (max-width: 780px) {
+        section form #buttons {
+          display: block;
+          margin: 20px auto 0;
+          width: 100%;
+          text-align: center; } }
+      section form #buttons span.btn {
+        border: 1px solid #ccc;
+        padding: 5px 10px;
+        background: #2f2f05;
+        color: #fff;
+        font-size: 13px;
+        cursor: pointer; }
+        section form #buttons span.btn:hover {
+          background-color: #527752; }
   section history {
     display: block;
     width: 90%;
-    margin: 20px auto 0; }
+    margin: 50px auto 0;
+    font-size: 15px; }
+    section history div .history-row-header {
+      border-bottom: 1px solid #ccc; }
+      section history div .history-row-header span {
+        font-weight: 800; }
+        @media screen and (max-width: 480px) {
+          section history div .history-row-header span {
+            font-size: 2.9vw; } }
+    section history div span {
+      width: 23%;
+      display: inline-block;
+      vertical-align: middle;
+      padding: 5px 0;
+      text-align: center;
+      color: #5a5858; }
     section history div .history-row {
       border-bottom: 1px solid #ccc;
       cursor: pointer; }
-      section history div .history-row:first-child span {
-        font-weight: 600; }
-      section history div .history-row span {
-        width: 23%;
-        display: inline-block;
-        vertical-align: middle;
-        padding: 5px 0;
-        text-align: center;
-        color: #5a5858; }
+      section history div .history-row:hover span {
+        text-decoration: underline; }
       section history div .history-row .date {
         display: inline-block;
         width: 23%; }
         section history div .history-row .date span {
-          width: 90%; }
+          width: 85%; }
+          @media screen and (max-width: 480px) {
+            section history div .history-row .date span {
+              font-size: 2.9vw; } }
         section history div .history-row .date i {
           width: 10%;
           display: inline;
           font-size: 12px; }
-  section #images .img-grid {
-    text-align: center; }
-    section #images .img-grid figure {
-      display: inline-block;
-      width: 200px;
-      height: 150px;
-      margin: 5px; }
-      section #images .img-grid figure img {
+  section images-grid {
+    margin-bottom: 50px;
+    display: block; }
+    section images-grid #images {
+      margin-top: 50px;
+      text-align: center;
+      border-top: 1px solid #ccc; }
+      section images-grid #images h3 {
+        color: #729472; }
+      section images-grid #images .img-grid {
+        text-align: center; }
+        section images-grid #images .img-grid a {
+          font-size: 0; }
+          section images-grid #images .img-grid a figure {
+            display: inline-block;
+            width: 200px;
+            height: 150px;
+            margin: 5px; }
+            section images-grid #images .img-grid a figure img {
+              display: inline-block;
+              width: 200px;
+              height: 150px;
+              margin: 5px; }
+              section images-grid #images .img-grid a figure img:hover {
+                opacity: 0.6; }
+      section images-grid #images .pagination span {
+        margin: 10px 0 0 7px;
         display: inline-block;
-        width: 200px;
-        height: 150px;
-        margin: 5px; }
+        border: 1px solid #ccc;
+        width: 20px;
+        padding: 3px;
+        cursor: pointer; }
+        section images-grid #images .pagination span:hover {
+          background-color: #2f2f05;
+          color: #fff; }
 
 /*# sourceMappingURL=style.css.map */

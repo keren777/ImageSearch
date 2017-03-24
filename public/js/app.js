@@ -6,50 +6,58 @@
     angular.module('imgSearch', [])
         .controller('imgSearchController', function ($scope, $http, $window) {
 
-            $scope.master = {};
             $scope.histories = $window.localStorage.length > 0 ? getAllStorage($window.localStorage) : null;
 
-            $scope.search = function (searchTerm, history = false) {
+            $scope.searchFlickr = function (searchTerm, page = 1, history = false) {
                 if (searchTerm.tags == undefined || searchTerm.tags.trim() == "") {
                     searchTerm.tags = null;
-                    $scope.master = angular.copy(searchTerm);
-                    $scope.form.$submitted = true;
                     return false;
                 }
-                $scope.form.tags.$setUntouched();
-                $scope.form.tags.$setValidity();
+                $scope.service = 'Flicker';
+                $scope.searchTerm = searchTerm;
 
-                const pixabayApi = `https://pixabay.com/api/?key=1631539-db8210cabd2636c6df59812df&&image_type=photo&q=${encodeURIComponent(searchTerm.tags)}`;
                 const flickrApi = `https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=JSON_CALLBACK&tags=${encodeURIComponent(searchTerm.tags)}&format=json`;
-                let flickrRes;
 
                 $http.jsonp(flickrApi)
                     .then(res => {
-                        flickrRes = res;
-                        return $http.get(pixabayApi);
+                        $scope.images = res.data.items;
+                        $scope.pages = null;
+                        addToLocalStorage(searchTerm, history, res, 'flickr');
+                        $scope.histories = $window.localStorage.length > 0 ? getAllStorage($window.localStorage) : null;
                     })
-                    .then(pixabayRes => {
-                        $scope.imagesPixabay = pixabayRes.data.hits;
-                        $scope.imagesFlickr = flickrRes.data.items;
+                    .catch(err => {
+                        console.log(err);
+                    });
+            };
 
-                        addToLocalStorage(searchTerm, history, pixabayRes, 'pixabay');
-                        addToLocalStorage(searchTerm, history, flickrRes, 'flickr');
+
+            $scope.searchPixabay = function (searchTerm, page = 1, history = false) {
+                if (searchTerm.tags == undefined || searchTerm.tags.trim() == "") {
+                    searchTerm.tags = null;
+                    return false;
+                }
+                $scope.service = 'Pixabay';
+                $scope.searchTerm = searchTerm;
+
+                const pixabayApi = `https://pixabay.com/api/?key=1631539-db8210cabd2636c6df59812df&&image_type=photo&q=${encodeURIComponent(searchTerm.tags)}&page=${page}`;
+
+                $http.get(pixabayApi)
+                    .then(res => {
+                        $scope.images = res.data.hits;
+                        $scope.pages = new Array(res.data.totalHits / 20);
+
+                        addToLocalStorage(searchTerm, history, res, 'pixabay');
 
                         $scope.histories = $window.localStorage.length > 0 ? getAllStorage($window.localStorage) : null;
                     })
                     .catch(err => {
-                      console.log(err);
+                        console.log(err);
                     });
-
-                // reset form validation
-                $scope.form.tags.$setValidity();
             };
 
-            // reset form to initial state
             $scope.resetForm = function () {
                 $scope.form.tags.$setValidity();
-                $scope.imagesPixabay = {};
-                $scope.imagesFlickr = {};
+                $scope.images = {};
                 $scope.searchTerm = {};
             };
 
@@ -74,7 +82,6 @@
                 if (minutes < 10) {
                     minutes = "0" + minutes;
                 }
-
 
                 if (!history) {
                     $window.localStorage.setItem(`${serviceName}_${ts}`, JSON.stringify({

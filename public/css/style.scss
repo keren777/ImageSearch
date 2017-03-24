@@ -1,6 +1,7 @@
 section {
   width: 90%;
   margin: 0 auto;
+  font-family: 'Open Sans', sans-serif;
 
   h1 {
     margin: 20px auto;
@@ -15,37 +16,74 @@ section {
 
     #searchTerm {
       height: 28px;
-      width: 100%;
-      max-width: 500px;
-      margin-bottom: 10px;
+      width: 55%;
       padding: 0 5px;
+    }
+
+    #buttons {
+
+      width: 40%;
+      display: inline-block;
+      text-align: right;
+
+      @media screen and (max-width: 780px) {
+        display: block;
+        margin: 20px auto 0;
+        width: 100%;
+        text-align: center;
+      }
+
+      span.btn {
+        border: 1px solid #ccc;
+        padding: 5px 10px;
+        background: #2f2f05;
+        color: #fff;
+        font-size: 13px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #527752;
+        }
+      }
     }
   }
 
   history {
     display: block;
     width: 90%;
-    margin: 20px auto 0;
+    margin: 50px auto 0;
+    font-size: 15px;
 
     div {
+      .history-row-header {
+        border-bottom: 1px solid #ccc;
+
+        span {
+          font-weight: 800;
+
+          @media screen and (max-width: 480px) {
+            font-size: 2.9vw;
+          }
+        }
+      }
+
+      span {
+        width: 23%;
+        display: inline-block;
+        vertical-align: middle;
+        padding: 5px 0;
+        text-align: center;
+        color: #5a5858;
+      }
 
       .history-row {
         border-bottom: 1px solid #ccc;
         cursor: pointer;
 
-        &:first-child {
+        &:hover {
           span {
-            font-weight: 600;
+            text-decoration: underline;
           }
-        }
-
-        span {
-          width: 23%;
-          display: inline-block;
-          vertical-align: middle;
-          padding: 5px 0;
-          text-align: center;
-          color: #5a5858;
         }
 
         .date {
@@ -53,7 +91,11 @@ section {
           width: 23%;
 
           span {
-            width: 90%;
+            width: 85%;
+
+            @media screen and (max-width: 480px) {
+              font-size: 2.9vw;
+            }
           }
           
           i {
@@ -66,22 +108,59 @@ section {
     }
   }
 
-  #images {
-    .img-grid {
+  images-grid {
 
+    margin-bottom: 50px;
+    display: block;
+
+    #images {
+      margin-top: 50px;
       text-align: center;
+      border-top: 1px solid #ccc;
 
-      figure {
-        display: inline-block;
-        width: 200px;
-        height: 150px;
-        margin: 5px;
+      h3 {
+        color: #729472;
+      }
 
-        img {
+      .img-grid {
+        text-align: center;
+
+        a {
+          font-size: 0;
+
+          figure {
+            display: inline-block;
+            width: 200px;
+            height: 150px;
+            margin: 5px;
+
+            img {
+              display: inline-block;
+              width: 200px;
+              height: 150px;
+              margin: 5px;
+
+              &:hover {
+                opacity: 0.6;
+              }
+            }
+          }
+        }
+      }
+
+      .pagination {
+        span {
+          margin: 10px 0 0 7px;
           display: inline-block;
-          width: 200px;
-          height: 150px;
-          margin: 5px;
+          border: 1px solid #ccc;
+          width: 20px;
+          padding: 3px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #2f2f05;
+            color: #fff;
+          }
         }
       }
     }
