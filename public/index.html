@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Image Search</title>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link  rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/directives/historyDirective.js"></script>
+    <script src="js/directives/imgGridDirective.js"></script>
+</head>
+<body>
+
+<section ng-app="imgSearch" ng-controller="imgSearchController">
+    <h1>My Image Search</h1>
+    <div class="app-container">
+        <form name="form" class="validate-form">
+            <input id="searchTerm"
+                   ng-model="searchTerm.tags"
+                   ng-target="form.tags"
+                   name=" tags"
+                   type="text"
+                   title="required input"
+                   placeholder="Enter key words (tags) separated by a comma."
+                   required />
+            <br />
+            Search Mode:
+            <input type="radio" name="SearchMode" value="any" />Any Tags
+            <input type="radio" name="SearchMode" value="all" checked />All Tags
+            <br />
+            <input type="button" class="btn btn-default" ng-click="resetForm(form);" value="Reset" />
+            <button type="submit" class="btn btn-primary" ng-click="search(searchTerm);document.getElementsByName('tags').focus();">
+                Search Flicker
+            </button>
+        </form>
+    </div>
+    <div id="message"></div>
+
+    <history ng-if="histories"></history>
+    <images-grid></images-grid>
+
+</section>
+
+</body>
+</html>

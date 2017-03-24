@@ -1,0 +1,18 @@
+<div id="images" class="app-container" ng-if="imagesFlickr && imagesPixabay">
+    <h3 ng-show="imagesFlickr.length > 0">Flicker Results</h3>
+    <div class="img-grid">
+        <a ng-repeat="img in imagesFlickr" ng-if="img">
+            <figure>
+                <img src="{{img.media.m}}" />
+            </figure>
+        </a>
+    </div>
+    <h3 ng-show="imagesPixabay.length > 0">Pixabay Results</h3>
+    <div class="img-grid">
+        <a ng-repeat="img in imagesPixabay" ng-if="img">
+            <figure>
+                <img src="{{img.webformatURL}}" />
+            </figure>
+        </a>
+    </div>
+</div>

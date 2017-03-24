@@ -1,0 +1,56 @@
+section {
+  width: 90%;
+  margin: 0 auto; }
+  section h1 {
+    margin: 20px auto;
+    text-align: center;
+    color: #527752;
+    line-height: 36px;
+    border-bottom: 1px solid; }
+  section form {
+    text-align: center; }
+    section form #searchTerm {
+      height: 28px;
+      width: 100%;
+      max-width: 500px;
+      margin-bottom: 10px;
+      padding: 0 5px; }
+  section history {
+    display: block;
+    width: 90%;
+    margin: 20px auto 0; }
+    section history div .history-row {
+      border-bottom: 1px solid #ccc;
+      cursor: pointer; }
+      section history div .history-row:first-child span {
+        font-weight: 600; }
+      section history div .history-row span {
+        width: 23%;
+        display: inline-block;
+        vertical-align: middle;
+        padding: 5px 0;
+        text-align: center;
+        color: #5a5858; }
+      section history div .history-row .date {
+        display: inline-block;
+        width: 23%; }
+        section history div .history-row .date span {
+          width: 90%; }
+        section history div .history-row .date i {
+          width: 10%;
+          display: inline;
+          font-size: 12px; }
+  section #images .img-grid {
+    text-align: center; }
+    section #images .img-grid figure {
+      display: inline-block;
+      width: 200px;
+      height: 150px;
+      margin: 5px; }
+      section #images .img-grid figure img {
+        display: inline-block;
+        width: 200px;
+        height: 150px;
+        margin: 5px; }
+
+/*# sourceMappingURL=style.css.map */

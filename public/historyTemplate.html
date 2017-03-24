@@ -1,0 +1,17 @@
+<div>
+    <div class="history-row">
+        <span>Search Term</span>
+        <span>Service</span>
+        <span>Search Date</span>
+        <span>Results</span>
+    </div>
+    <div class="history-row" ng-repeat="history in histories" ng-click="search(history.tagsObj, true)">
+        <span>{{history.term}}</span>
+        <span>{{history.service}}</span>
+        <div class="date">
+            <span title="{{history.time.time}}">{{history.time.day}}</span>
+            <i class="fa fa-info" aria-hidden="true" title="{{history.time.time}}"></i>
+        </div>
+        <span>{{history.resNum}}</span>
+    </div>
+</div>
