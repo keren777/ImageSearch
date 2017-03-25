@@ -11,18 +11,33 @@ section {
     border-bottom: 1px solid;
   }
 
+  h3 {
+    color: #729472;
+    text-align: center;
+  }
+
   form {
     text-align: center;
+    position: relative;
 
     #searchTerm {
       height: 28px;
       width: 55%;
       padding: 0 5px;
+
+      @media screen and (max-width: 600px) {
+        font-size: 1.8vw;
+      }
+    }
+    .reset {
+      position: relative;
+      right: 32px;
+      border: none;
+      background: #fff;
+      color: #777;
     }
 
     #buttons {
-
-      width: 40%;
       display: inline-block;
       text-align: right;
 
@@ -33,13 +48,21 @@ section {
         text-align: center;
       }
 
-      span.btn {
+      input.btn {
         border: 1px solid #ccc;
         padding: 5px 10px;
         background: #2f2f05;
         color: #fff;
         font-size: 13px;
         cursor: pointer;
+
+        &:disabled {
+          background: #dddddd;
+
+          &:hover {
+            background-color: #dddddd;
+          }
+        }
 
         &:hover {
           background-color: #527752;
@@ -54,9 +77,22 @@ section {
     margin: 50px auto 0;
     font-size: 15px;
 
+    .clr-history {
+      border: none;
+      background: #fff;
+      text-decoration: underline;
+      color: #777;
+      cursor: pointer;
+
+      &:hover {
+        color: #c7c6c6;
+      }
+    }
+
     div {
       .history-row-header {
         border-bottom: 1px solid #ccc;
+        margin-top:10px;
 
         span {
           font-weight: 800;
@@ -116,11 +152,6 @@ section {
     #images {
       margin-top: 50px;
       text-align: center;
-      border-top: 1px solid #ccc;
-
-      h3 {
-        color: #729472;
-      }
 
       .img-grid {
         text-align: center;
@@ -166,3 +197,5 @@ section {
     }
   }
 }
+
+*:focus {outline:none;}

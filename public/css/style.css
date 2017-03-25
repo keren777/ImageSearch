@@ -8,14 +8,26 @@ section {
     color: #527752;
     line-height: 36px;
     border-bottom: 1px solid; }
-  section form {
+  section h3 {
+    color: #729472;
     text-align: center; }
+  section form {
+    text-align: center;
+    position: relative; }
     section form #searchTerm {
       height: 28px;
       width: 55%;
       padding: 0 5px; }
+      @media screen and (max-width: 600px) {
+        section form #searchTerm {
+          font-size: 1.8vw; } }
+    section form .reset {
+      position: relative;
+      right: 32px;
+      border: none;
+      background: #fff;
+      color: #777; }
     section form #buttons {
-      width: 40%;
       display: inline-block;
       text-align: right; }
       @media screen and (max-width: 780px) {
@@ -24,22 +36,35 @@ section {
           margin: 20px auto 0;
           width: 100%;
           text-align: center; } }
-      section form #buttons span.btn {
+      section form #buttons input.btn {
         border: 1px solid #ccc;
         padding: 5px 10px;
         background: #2f2f05;
         color: #fff;
         font-size: 13px;
         cursor: pointer; }
-        section form #buttons span.btn:hover {
+        section form #buttons input.btn:disabled {
+          background: #dddddd; }
+          section form #buttons input.btn:disabled:hover {
+            background-color: #dddddd; }
+        section form #buttons input.btn:hover {
           background-color: #527752; }
   section history {
     display: block;
     width: 90%;
     margin: 50px auto 0;
     font-size: 15px; }
+    section history .clr-history {
+      border: none;
+      background: #fff;
+      text-decoration: underline;
+      color: #777;
+      cursor: pointer; }
+      section history .clr-history:hover {
+        color: #c7c6c6; }
     section history div .history-row-header {
-      border-bottom: 1px solid #ccc; }
+      border-bottom: 1px solid #ccc;
+      margin-top: 10px; }
       section history div .history-row-header span {
         font-weight: 800; }
         @media screen and (max-width: 480px) {
@@ -74,10 +99,7 @@ section {
     display: block; }
     section images-grid #images {
       margin-top: 50px;
-      text-align: center;
-      border-top: 1px solid #ccc; }
-      section images-grid #images h3 {
-        color: #729472; }
+      text-align: center; }
       section images-grid #images .img-grid {
         text-align: center; }
         section images-grid #images .img-grid a {
@@ -104,5 +126,8 @@ section {
         section images-grid #images .pagination span:hover {
           background-color: #2f2f05;
           color: #fff; }
+
+*:focus {
+  outline: none; }
 
 /*# sourceMappingURL=style.css.map */

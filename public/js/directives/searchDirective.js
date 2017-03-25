@@ -1,8 +1,8 @@
 angular.module('imgSearch')
-    .directive('history', function () {
+    .directive('search', function () {
 
         return {
             restrict: 'E',
-            templateUrl: 'historyTemplate.html',
+            templateUrl: 'searchTemplate.html',
         };
     });

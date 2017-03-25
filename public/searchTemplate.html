@@ -1,0 +1,15 @@
+<form name="searchForm" class="validate-form">
+    <input id="searchTerm"
+           ng-model="searchTerm.tags"
+           ng-target="searchTerm.tags"
+           name=" tags"
+           type="text"
+           title="required input"
+           placeholder="Enter key words (tags) separated by a comma."
+           required />
+    <input type="button" class="reset" ng-disabled="searchForm.$invalid" ng-click="resetForm(searchForm);" value="X"/>
+    <div id="buttons">
+        <input type="button" class="btn" ng-disabled="searchForm.$invalid" ng-click="searchFlickr(searchTerm, 1, false);" value="Search Flickr"/>
+        <input type="button" class="btn" ng-disabled="searchForm.$invalid" ng-click="searchPixabay(searchTerm, 1, false);" value="Search Pixabay"/>
+    </div>
+</form>

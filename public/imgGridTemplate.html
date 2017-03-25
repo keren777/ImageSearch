@@ -1,4 +1,4 @@
-<div id="images" class="app-container" ng-if="images">
+<div id="images" ng-if="images">
     <h3 ng-show="images.length > 0">{{service}} Results</h3>
     <div class="img-grid">
         <a ng-repeat="img in images" ng-if="img" ng-href="{{img.link ? img.link : img.pageURL}}" target="_blank">
@@ -7,7 +7,6 @@
             </figure>
         </a>
     </div>
-
     <div class="pagination" ng-if="pages">
         <span ng-repeat="i in pages track by $index" ng-click="searchPixabay(searchTerm, $index + 1, true)">{{$index + 1}}</span>
     </div>

@@ -1,6 +1,3 @@
-/**
- * Created by keren.kochanovitch on 24/03/2017.
- */
 const express = require('express');
 const path = require('path');
 const app = express();

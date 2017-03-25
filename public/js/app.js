@@ -1,12 +1,9 @@
-/**
- * Created by keren.kochanovitch on 24/03/2017.
- */
 (function (angular) {
     'use strict';
     angular.module('imgSearch', [])
         .controller('imgSearchController', function ($scope, $http, $window) {
 
-            $scope.histories = $window.localStorage.length > 0 ? getAllStorage($window.localStorage) : null;
+            $scope.histories = $window.localStorage.length > 0 ? getAllStorage() : null;
 
             $scope.searchFlickr = function (searchTerm, page = 1, history = false) {
                 if (searchTerm.tags == undefined || searchTerm.tags.trim() == "") {
@@ -30,7 +27,6 @@
                     });
             };
 
-
             $scope.searchPixabay = function (searchTerm, page = 1, history = false) {
                 if (searchTerm.tags == undefined || searchTerm.tags.trim() == "") {
                     searchTerm.tags = null;
@@ -44,30 +40,45 @@
                 $http.get(pixabayApi)
                     .then(res => {
                         $scope.images = res.data.hits;
-                        $scope.pages = new Array(res.data.totalHits / 20);
+                        $scope.pages = (res.data.totalHits ? new Array( Math.ceil(res.data.totalHits / 20)) : null);
 
                         addToLocalStorage(searchTerm, history, res, 'pixabay');
 
-                        $scope.histories = $window.localStorage.length > 0 ? getAllStorage($window.localStorage) : null;
+                        $scope.histories = $window.localStorage.length > 0 ? getAllStorage() : null;
                     })
                     .catch(err => {
                         console.log(err);
                     });
             };
 
+            $scope.clearHistory = function () {
+                if (confirm("You are about to remove all history, Are you sure?")) {
+                    const keys = Object.keys($window.localStorage);
+                    let i = 0, key;
+                    for (; key = keys[i]; i++) {
+                        if (key.includes('flickr') || key.includes('pixabay')) {
+                            $window.localStorage.removeItem(key);
+                        }
+                    }
+                    $scope.histories = $window.localStorage.length > 0 ? getAllStorage() : null;
+                    $scope.resetForm();
+                }
+            };
+
+
             $scope.resetForm = function () {
-                $scope.form.tags.$setValidity();
                 $scope.images = {};
+                $scope.pages = null;
                 $scope.searchTerm = {};
             };
 
-            function getAllStorage(localStorage) {
+            function getAllStorage() {
                 const archive = [],
-                    keys = Object.keys(localStorage);
+                    keys = Object.keys($window.localStorage);
 
                 let i = 0, key;
                 for (; key = keys[i]; i++) {
-                    archive.push( JSON.parse(localStorage.getItem(key)));
+                    archive.push( JSON.parse($window.localStorage.getItem(key)));
                 }
                 return archive;
             }
